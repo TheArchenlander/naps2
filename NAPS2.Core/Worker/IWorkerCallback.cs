@@ -11,7 +11,9 @@ namespace NAPS2.Worker
     public interface IWorkerCallback
     {
         [OperationContract(IsOneWay = true)]
-        void TwainImageReceived(RecoveryIndexImage image, byte[] thumbnail, string tempImageFilePath);
+        //void TwainImageReceived(RecoveryIndexImage image, byte[] thumbnail, string tempImageFilePath);
+        void TwainImageReceived(RecoveryIndexImage image, byte[] thumbnail, string tempImageFilePath, Boolean patchT);
+
         
         event Action<ScannedImage, string> ImageCallback;
     }
