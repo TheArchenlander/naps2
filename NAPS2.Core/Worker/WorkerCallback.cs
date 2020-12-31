@@ -12,7 +12,7 @@ namespace NAPS2.Worker
     {
         public event Action<ScannedImage, string> ImageCallback;
 
-        public void TwainImageReceived(RecoveryIndexImage image, byte[] thumbnail, string tempImageFilePath)
+        /*public void TwainImageReceived(RecoveryIndexImage image, byte[] thumbnail, string tempImageFilePath)
         {
             var scannedImage = new ScannedImage(image);
             if (thumbnail != null)
@@ -20,6 +20,18 @@ namespace NAPS2.Worker
                 scannedImage.SetThumbnail(new Bitmap(new MemoryStream(thumbnail)));
             }
             ImageCallback?.Invoke(scannedImage, tempImageFilePath);
+        }*/
+        public void TwainImageReceived(RecoveryIndexImage image, byte[] thumbnail, string tempImageFilePath, Boolean patchT)
+        {
+            var scannedImage = new ScannedImage(image);
+            if (patchT == true) scannedImage.PatchCode = PatchCode.PatchT;
+
+            if (thumbnail != null)
+            {
+                scannedImage.SetThumbnail(new Bitmap(new MemoryStream(thumbnail)));
+            }
+            ImageCallback?.Invoke(scannedImage, tempImageFilePath);
         }
+    }
     }
 }
