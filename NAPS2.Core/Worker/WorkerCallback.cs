@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using NAPS2.Recovery;
 using NAPS2.Scan.Images;
+using NAPS2.Scan;
 
 namespace NAPS2.Worker
 {
